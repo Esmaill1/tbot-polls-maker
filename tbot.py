@@ -14,7 +14,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "c) Option 3\n"
         "d) Option 4\n"
         "✅ Correct answer is: c\n\n"
-        "🔄 Repeat for each question, and I can handle up to 20 questions at once!"
+        "🔄 Repeat for each question, and I can handle up to 20 questions at once!\n"
         " Remamber to add an empty line between every quistion and the next one "
     )
 
