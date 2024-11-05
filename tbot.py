@@ -7,15 +7,14 @@ BOT_TOKEN = '7923351343:AAHW1tX2Cl5d2SK3KTkihaltmBLpCeOqNSg'
 # Start command handler
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "👋 Welcome! I'm your quiz bot. To create polls, please send me your questions formatted like this:\n\n"
-        "❓ Your question?\n"
-        "a) Option 1\n"
-        "b) Option 2\n"
-        "c) Option 3\n"
-        "d) Option 4\n"
-        "✅ Correct answer is: c\n\n"
-        "🔄 Repeat for each question, and I can handle up to 20 questions at once!\n"
-        " Remamber to add an empty line between every quistion and the next one "
+        "Hello! Send me up to 20 questions in this format to create polls:\n\n"
+        "Your question?\n"
+        "a Option 1\n"
+        "b Option 2\n"
+        "c Option 3\n"
+        "d Option 4\n"
+        "correct answer is: c\n"
+        "Repeat for the next question."
     )
 
 # Poll creation handler
@@ -51,16 +50,15 @@ async def create_polls(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 correct_option_id=correct_answer_index,  # Set the correct answer
                 is_anonymous=True
             )
-            await update.message.reply_text("✅ Poll created successfully! Good luck to your participants! 🎉")
         else:
-            await update.message.reply_text("⚠️ Oops! Please make sure each question has at least 2 options and a correct answer specified.")
+            await update.message.reply_text("Please provide a valid question, options, and a correct answer for each poll.")
 
 # Poll answer handler to show the correct answer
 async def poll_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     poll_id = update.poll.id
     # Send a message to acknowledge the answer (customize if needed)
     chat_id = update.effective_chat.id
-    await context.bot.send_message(chat_id=chat_id, text="📝 Thank you for your answer! Stay tuned for the correct response.")
+    await context.bot.send_message(chat_id=chat_id, text="Thank you for answering!")
 
 # Main function to set up the bot
 def main():
