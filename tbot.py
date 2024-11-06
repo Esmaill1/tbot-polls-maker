@@ -1,5 +1,6 @@
 from telegram import Update, Poll
-from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, PollHandler, filters, ContextTypes
+from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, PollHandler, filters, ContextTypes, JobQueue
+import asyncio
 
 # Replace 'YOUR_BOT_TOKEN' with your actual bot token from BotFather
 BOT_TOKEN = '7923351343:AAHW1tX2Cl5d2SK3KTkihaltmBLpCeOqNSg'
@@ -60,10 +61,19 @@ async def poll_answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
     await context.bot.send_message(chat_id=chat_id, text="Thank you for answering!")
 
+# Active task to keep the bot alive (hidden)
+async def keep_alive(context: ContextTypes.DEFAULT_TYPE):
+    # Perform an API call to keep the bot active, without sending any visible message
+    await context.bot.get_updates(limit=1)  # Fetching updates to keep the bot active
+
 # Main function to set up the bot
 def main():
     # Create the bot application
     app = ApplicationBuilder().token(BOT_TOKEN).build()
+
+    # Add the JobQueue to run keep_alive every 7 seconds
+    job_queue = app.job_queue
+    job_queue.run_repeating(keep_alive, interval=7, first=0)
 
     # Command handlers
     app.add_handler(CommandHandler("start", start))
