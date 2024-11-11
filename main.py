@@ -10,15 +10,14 @@ keep_alive_counter = 0
 # Start command handler
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "¯\_( ͡° ͜ʖ ͡°)_/¯ أهلاً! ابعتلي لحد 20 سؤال بالتنسيق ده علشان أعمل استفتاءات\n"
-        "خد الصيغه حطها ل chat gpt وخليه وهو بيطلعلك الأسئله يستخدمها \n"
-        "الصيغه هي كالأتي :"
+        "(￣、￣) أهلاً! ابعتلي لحد 20 سؤال بالتنسيق ده علشان أعمل استفتاءات\n"
         "\nYour question?\n"
         "a Option 1\n"
         "b Option 2\n"
         "c Option 3\n"
         "d Option 4\n"
-        "correct answer is: c\n"
+        "correct answer is: c\n\n"
+        "خد الصيغه حطها ل chat gpt وخليه وهو بيطلعلك الأسئله يستخدمها \n"
         " (ㆆ_ㆆ) كرر نفس الطريقه للسؤال اللي بعده بس اتأكد تسيب مسافه بين السؤالين "
     )
 
