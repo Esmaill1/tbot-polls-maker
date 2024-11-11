@@ -10,8 +10,9 @@ keep_alive_counter = 0
 # Start command handler
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "¯\_( ͡° ͜ʖ ͡°)_/¯ أهلاً! ابعتلي لحد 20 سؤال بالتنسيق ده علشان أعمل استفتاءات:\n\n"
-        "خد الصيغه حطها ل chat gpt وخليه وهو بيطلعلك الأسئله يستخدمها "
+        "¯\_( ͡° ͜ʖ ͡°)_/¯ أهلاً! ابعتلي لحد 20 سؤال بالتنسيق ده علشان أعمل استفتاءات\n"
+        "خد الصيغه حطها ل chat gpt وخليه وهو بيطلعلك الأسئله يستخدمها \n"
+        "الصيغه هي كالأتي :"
         "\nYour question?\n"
         "a Option 1\n"
         "b Option 2\n"
