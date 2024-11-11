@@ -10,14 +10,15 @@ keep_alive_counter = 0
 # Start command handler
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "اذيك؟\n Send me up to 20 questions in this format to create polls:\n\n"
+        "¯\_( ͡° ͜ʖ ͡°)_/¯ أهلاً! ابعتلي لحد 20 سؤال بالتنسيق ده علشان أعمل استفتاءات:\n\n"
+        "خد الصيغه حطها ل chat gpt وخليه وهو بيطلعلك الأسئله يستخدمها "
         "Your question?\n"
         "a Option 1\n"
         "b Option 2\n"
         "c Option 3\n"
         "d Option 4\n"
         "correct answer is: c\n"
-        "Repeat for the next question."
+        " (ㆆ_ㆆ) كرر نفس الطريقه للسؤال اللي بعده بس اتأكد تسيب مسافه بين السؤالين "
     )
 
 # Poll creation handler
