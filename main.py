@@ -10,7 +10,7 @@ keep_alive_counter = 0
 # Start command handler
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "Hello! Send me up to 20 questions in this format to create polls:\n\n"
+        "اذيك؟\n Send me up to 20 questions in this format to create polls:\n\n"
         "Your question?\n"
         "a Option 1\n"
         "b Option 2\n"
