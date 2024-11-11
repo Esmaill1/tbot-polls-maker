@@ -10,7 +10,7 @@ keep_alive_counter = 0
 # Start command handler
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "(￣、￣) أهلاً! ابعتلي لحد 20 سؤال بالتنسيق ده علشان أعمل استفتاءات\n"
+        "اهلاً! ابعتلي لحد 20 سؤال بنفس الصيغه دي 👇👇 وانا هعملهملك كويز منغير ما تتعب نفسك\n|n"
         "\nYour question?\n"
         "a Option 1\n"
         "b Option 2\n"
