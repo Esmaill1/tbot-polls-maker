@@ -8,19 +8,21 @@ BOT_TOKEN = '7923351343:AAHW1tX2Cl5d2SK3KTkihaltmBLpCeOqNSg'
 keep_alive_counter = 0
 
 # Start command handler
+# Start command handler
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "اهلاً! تقدر تبعتلي اسئلة بنفس الصيغه دي 👇👇\n\n"
-        "\nYour question?\n"
-        "a Option 1\n"
-        "b Option 2\n"
-        "c Option 3\n"
-        "d Option 4\n"
-        "correct answer is: c\n\n"
-        "وانا هعملهالك كويزات \n "
-        "⚡خد الصيغه واعطيها ل chat gpt وخليه وهو بيطلعلك الأسئله يستخدمها \n"
-        "⚡تقدر تحط كذا سؤال ورا بعض فنفس الرساله وانا هحولهملك كلهم لكويزات بس ابقي سيب سطر فاضي بين كل سؤال والتاني (ㆆ_ㆆ)"
+        "[Your question?]\n"
+        "a [Option 1]\n"
+        "b [Option 2]\n"
+        "c [Option 3]\n"
+        "d [Option 4]\n"
+        "Correct answer is: [correct option]\n\n"
+        "وانا هحول الاسئلة لكويزات بسهولة!\n"
+        "⚡ خد الصيغه دي واستخدمها مع ChatGPT عشان تطلع الأسئلة بالشكل ده.\n"
+        "⚡ تقدر تبعت كذا سؤال مع بعض في نفس الرسالة، بس خلي فيه سطر فاضي بين كل سؤال والتاني. (ㆆ_ㆆ)"
     )
+
 
 # Poll creation handler
 async def create_polls(update: Update, context: ContextTypes.DEFAULT_TYPE):
