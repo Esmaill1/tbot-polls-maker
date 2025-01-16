@@ -13,7 +13,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 chat_id=update.effective_chat.id,
                 photo=image_file,
                 caption=(
-                    "اهلاً! تقدر تبعتلي اسئلة بنفس الصيغه دي 👇👇\n\n"
+                    " اهلاً! تقدر تبعتلي اسئلة بنفس الصيغه دي 👇👇 (زي الصوره)\n\n"
                     "[Your question?]\n"
                     "a [Option 1]\n"
                     "b [Option 2]\n"
