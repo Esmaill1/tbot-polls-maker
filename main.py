@@ -1,5 +1,5 @@
 from telegram import Update
-from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
+from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
 # Replace 'YOUR_BOT_TOKEN' with your actual bot token from BotFather
 BOT_TOKEN = '7923351343:AAHW1tX2Cl5d2SK3KTkihaltmBLpCeOqNSg'
@@ -7,23 +7,29 @@ BOT_TOKEN = '7923351343:AAHW1tX2Cl5d2SK3KTkihaltmBLpCeOqNSg'
 # Start command handler
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
-        # Send the image with the instructions as the caption
+        # Escape MarkdownV2 special characters
+        caption = (
+            "اهلاً\\! تقدر تبعتلي اسئلة بنفس الصيغه دي 👇👇 \\(زي الصوره\\)\n\n"
+            "```\n"
+            "\\[Your question\\?\\]\n"
+            "a \\[Option 1\\]\n"
+            "b \\[Option 2\\]\n"
+            "c \\[Option 3\\]\n"
+            "d \\[Option 4\\]\n"
+            "Correct answer is: \\[correct option\\]\n"
+            "```\n\n"
+            "وانا هحول الاسئلة لكويزات بسهولة\\!\n"
+            "⚡ خد الصيغه دي واستخدمها مع ChatGPT عشان تطلع الأسئلة بالشكل ده\\.\n"
+            "⚡ تقدر تبعت كذا سؤال مع بعض في نفس الرسالة، بس خلي فيه \\(سطر واحد فقط\\) فاضي بين كل سؤال والتاني\\. \\(ㆆ\\_ㆆ\\)"
+        )
+
+        # Send the image with the corrected caption
         with open('ff.jpg', 'rb') as image_file:
             await context.bot.send_photo(
                 chat_id=update.effective_chat.id,
                 photo=image_file,
-                caption=(
-                    " اهلاً! تقدر تبعتلي اسئلة بنفس الصيغه دي 👇👇 (زي الصوره)\n\n"
-                    "[Your question?]\n"
-                    "a [Option 1]\n"
-                    "b [Option 2]\n"
-                    "c [Option 3]\n"
-                    "d [Option 4]\n"
-                    "Correct answer is: [correct option]\n\n"
-                    "وانا هحول الاسئلة لكويزات بسهولة!\n"
-                    "⚡ خد الصيغه دي واستخدمها مع ChatGPT عشان تطلع الأسئلة بالشكل ده.\n"
-                    "⚡ تقدر تبعت كذا سؤال مع بعض في نفس الرسالة، بس خلي فيه (سطر واحد فقط) فاضي بين كل سؤال والتاني. (ㆆ_ㆆ)"
-                )
+                caption=caption,
+                parse_mode="MarkdownV2"  # Use MarkdownV2 for proper formatting
             )
     except Exception as e:
         await update.message.reply_text(f"Failed to send the image. Error: {str(e)}")
