@@ -8,20 +8,34 @@ BOT_TOKEN = '7923351343:AAHW1tX2Cl5d2SK3KTkihaltmBLpCeOqNSg'
 keep_alive_counter = 0
 
 # Start command handler
-# Start command handler
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(
-        "اهلاً! تقدر تبعتلي اسئلة بنفس الصيغه دي 👇👇\n\n"
-        "[Your question?]\n"
-        "a [Option 1]\n"
-        "b [Option 2]\n"
-        "c [Option 3]\n"
-        "d [Option 4]\n"
-        "Correct answer is: [correct option]\n\n"
-        "وانا هحول الاسئلة لكويزات بسهولة!\n"
-        "⚡ خد الصيغه دي واستخدمها مع ChatGPT عشان تطلع الأسئلة بالشكل ده.\n"
-        "⚡ تقدر تبعت كذا سؤال مع بعض في نفس الرسالة، بس خلي فيه (سطر واحد فقط) فاضي بين كل سؤال والتاني. (ㆆ_ㆆ)"
-    )
+    try:
+        # Send the image with a copyable code block in the caption
+        with open('ff.jpg', 'rb') as image_file:
+            await context.bot.send_photo(
+                chat_id=update.effective_chat.id,
+                photo=image_file,
+                caption=(
+                    "اهلاً\! تقدر تبعتلي اسئلة بنفس الصيغه دي 👇👇\n\n"
+                    "```\n"
+                    "\[Your question\?]\n"
+                    "a \[Option 1\]\n"
+                    "b \[Option 2\]\n"
+                    "c \[Option 3\]\n"
+                    "d \[Option 4\]\n"
+                    "Correct answer is\: \[correct option\]\n"
+                    "```\n\n"
+                    "⚡ خد الصيغه دي واستخدمها مع ChatGPT عشان تطلع الأسئلة بالشكل ده\.\n"
+                    "⚡ تقدر تبعت كذا سؤال مع بعض في نفس الرسالة، بس خلي فيه \(سطر واحد فقط\) فاضي بين كل سؤال والتاني\. \(ㆆ\_ㆆ\)"
+                ),
+                parse_mode="MarkdownV2"
+            )
+    except Exception as e:
+        await update.message.reply_text(f"Failed to send the image. Error: {str(e)}")
+
+
+
+
 
 
 # Poll creation handler
