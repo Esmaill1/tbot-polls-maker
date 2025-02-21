@@ -144,12 +144,12 @@ async def poll_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
             caption = (
                 "اهلاً\\! تقدر تبعتلي اسئلة بنفس الصيغه دي 👇👇\n\n"
                 "```\n"
-                "\$$ Your question\\?\ $$\n"
-                "a \$$ Option 1\ $$\n"
-                "b \$$ Option 2\ $$\n"
-                "c \$$ Option 3\ $$\n"
-                "d \$$ Option 4\ $$\n"
-                "Correct answer is\\: \$$ correct option\ $$\n"
+                "\[Your question\\?\]\n"
+                "a \[Option 1\]\n"
+                "b \[Option 2\]\n"
+                "c \[Option 3\]\n"
+                "d \[Option 4\]\n"
+                "Correct answer is\\: \[correct option\]\n"
                 "```\n\n"
                 "⚡ خد الصيغه دي واستخدمها مع ChatGPT عشان تطلع الأسئلة بالشكل ده\\.\n"
                 "⚡ تقدر تبعت كذا سؤال مع بعض في نفس الرسالة، بس خلي فيه \\(سطر واحد فقط\\) فاضي بين كل سؤال والتاني\\. \\(ㆆ\\_ㆆ\\)"
