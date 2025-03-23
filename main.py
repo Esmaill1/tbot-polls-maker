@@ -6,7 +6,7 @@ from reportlab.pdfgen import canvas
 import os
 
 # Replace with your bot token from BotFather
-TOKEN = '7923351343:AAHW1tX2Cl5d2SK3KTkihaltmBLpCeOqNSg'  # Replace this with your actual token
+TOKEN = '7289833807:AAGgS7Or7frzU5GIMnv8_wrMvehpLp0f7xY'  # Replace this with your actual token
 
 # Variable to keep the bot alive (if JobQueue is available)
 keep_alive_counter = 0
