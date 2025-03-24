@@ -1,15 +1,22 @@
 # Import necessary modules
+# Import necessary modules
 from telegram import Update, Poll
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes, PollHandler
 from PIL import Image
 from reportlab.pdfgen import canvas
 import os
+from dotenv import load_dotenv  # Add this import
 
-# Replace with your bot token from BotFather
-TOKEN = '7923351343:AAHBAnxvZRKZYmXez8pgfdkJm4MmjQqCS8s'  # Replace this with your actual token
+# Load environment variables from .env file
+load_dotenv()
+
+# Get token from environment variable
+TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN')  # Replace hardcoded token with this
 
 # Variable to keep the bot alive (if JobQueue is available)
 keep_alive_counter = 0
+
+# Rest of your code remains the same
 
 # Start command handler with language selection
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -152,7 +159,11 @@ async def poll_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
                 "Correct answer is\\: \[correct option\]\n"
                 "```\n\n"
                 "⚡ خد الصيغه دي واستخدمها مع ChatGPT عشان تطلع الأسئلة بالشكل ده\\.\n"
-                "⚡ تقدر تبعت كذا سؤال مع بعض في نفس الرسالة، بس خلي فيه \\(سطر واحد فقط\\) فاضي بين كل سؤال والتاني\\. \\(ㆆ\\_ㆆ\\)"
+                "⚡ تقدر تبعت كذا سؤال مع بعض في نفس الرسالة، بس خلي فيه \\(سطر واحد فقط\\) فاضي بين كل سؤال والتاني\\. \\(ㆆ\\_ㆆ\\)\n\n"
+                "✅ **ملاحظات هامة:**\n"
+                "\\- احرص على أن تكون الخيارات مرتبة كما هو موضح \\(a, b, c, d\\)\\.\n"
+                "\\- اكتب **\\\"Correct answer is\\:\\\"** ثم الحرف الصحيح فقط \\(a, b, c أو d\\)\\.\n"
+                "\\- ضع **سطرًا فارغًا** بين كل سؤالين لتفادي الأخطاء\\."
             ) if context.user_data['language'] == 'arabic' else (
                 "Poll service activated\\!\n"
                 "Send questions in this format:\n\n"
@@ -172,6 +183,26 @@ async def poll_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
                 caption=caption,
                 parse_mode="MarkdownV2"
             )
+    except FileNotFoundError:
+        await update.message.reply_text(
+            "اهلاً\\! تقدر تبعتلي اسئلة بنفس الصيغه دي:\n\n"
+            "```\n"
+            "\$$ Your question\\?\ $$\n"
+            "a \$$ Option 1\ $$\n"
+            "b \$$ Option 2\ $$\n"
+            "c \$$ Option 3\ $$\n"
+            "d \$$ Option 4\ $$\n"
+            "Correct answer is\\: \$$ correct option\ $$\n"
+            "```\n\n"
+            "✅ **ملاحظات هامة:**\n"
+            "\\- احرص على أن تكون الخيارات مرتبة كما هو موضح \\(a, b, c, d\\)\\.\n"
+            "\\- اكتب **\\\"Correct answer is\\:\\\"** ثم الحرف الصحيح فقط \\(a, b, c أو d\\)\\.\n"
+            "\\- ضع **سطرًا فارغًا** بين كل سؤالين لتفادي الأخطاء\\.\n\n"
+            "(الصورة غير موجودة، تأكد من وجود 'ff.jpg' إذا كنت تريد الصورة المثال\\.)" if context.user_data['language'] == 'arabic' else 
+            "Poll service activated\\! Send questions in the format above\\.\n"
+            "(Image not found, please ensure 'ff.jpg' exists if you want the example image\\.)",
+            parse_mode="MarkdownV2"
+        )
     except FileNotFoundError:
         await update.message.reply_text(
             "اهلاً\\! تقدر تبعتلي اسئلة بنفس الصيغه دي:\n\n"
