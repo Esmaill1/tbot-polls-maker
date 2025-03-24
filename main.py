@@ -11,7 +11,7 @@ import os
 
 
 # Get token from environment variable
-TOKEN = 'TELEGRAM_BOT_TOKEN'  # Replace hardcoded token with this
+TOKEN = 'TELEGRAM_BOT_TOKEN=7923351343:AAHBAnxvZRKZYmXez8pgfdkJm4MmjQqCS8s'  # Replace hardcoded token with this
 
 # Variable to keep the bot alive (if JobQueue is available)
 keep_alive_counter = 0
