@@ -5,13 +5,13 @@ from telegram.ext import Application, CommandHandler, MessageHandler, filters, C
 from PIL import Image
 from reportlab.pdfgen import canvas
 import os
-from dotenv import load_dotenv  # Add this import
+  # Add this import
 
 # Load environment variables from .env file
-load_dotenv()
+
 
 # Get token from environment variable
-TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN')  # Replace hardcoded token with this
+TOKEN = 'TELEGRAM_BOT_TOKEN'  # Replace hardcoded token with this
 
 # Variable to keep the bot alive (if JobQueue is available)
 keep_alive_counter = 0
